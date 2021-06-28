@@ -5,6 +5,7 @@ const path = require('path');
 
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 var compiler = null, server = null;
@@ -18,7 +19,9 @@ function run() {
         'output': {
             'filename': 'out.js',
             'path': path.join(process.cwd(), 'build'),
-            'publicPath': '/'
+            'publicPath': '/',
+            hotUpdateMainFilename: 'hot/[runtime].[fullhash].hot-update.json', // makes all the hmr files to go to the hot folder
+            hotUpdateChunkFilename: 'hot/[id].[fullhash].hot-update.js'
         },
         'module': {
             'rules': [
@@ -31,7 +34,11 @@ function run() {
         'stats': 'none',
         'infrastructureLogging': {
             'level': 'info'
-        }
+        },
+        plugins: [new HtmlWebpackPlugin({
+          filename: 'index.html',
+          template: './template.ejs'
+        })]
     });
 
 
