@@ -1,0 +1,16 @@
+{
+  "name": "webpack_css_reload",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tgrajewski/webpack_css_reload.git"
+  },
+  "devDependencies": {
+    "mini-css-extract-plugin": "^1.6.1",
+    "webpack": "^5.40.0",
+    "webpack-dev-server": "^4.0.0-beta.3"
+  }
+}
